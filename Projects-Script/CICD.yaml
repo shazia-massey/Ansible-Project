@@ -97,7 +97,7 @@
       
     - name: Deploy To Container
       command: docker run -d --name secret-santa -p 8080:8080 masseys/santa:latest-condition.sh
-        dest: /home/ubuntu/secretsanta-generator/docker-container-condition.sh
+        
         
     - name: Permissions on shell script
       command: chmod +x docker-container-condition.sh
