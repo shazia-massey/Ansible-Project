@@ -25,7 +25,7 @@
         
      - name: Permissions on shell script
        command: chmod +x /home/ubuntu/shazia/Projects-Script/docker-container-condition.sh
-      args:
+       args:
         chdir: /home/ubuntu/secretsanta-generator   
       
     - name: Execute shell script
