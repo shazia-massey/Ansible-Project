@@ -19,7 +19,7 @@
         msg: "{{ git_result }}"
     - name: Copy shell script to remote server
       copy:
-        src: /home/ubuntu/shazia/files/docker-container-condition.sh
+        src: /Projects-Script/docker-container-condition.sh
         dest: /home/ubuntu/secretsanta-generator/docker-container-condition.sh
         remote_src: no
         
