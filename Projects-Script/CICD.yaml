@@ -22,10 +22,12 @@
       copy:
         src:  /home/ubuntu/shazia/Projects-Script/docker-container-condition.sh
         dest: /home/ubuntu/secretsanta-generator/docker-container-condition.sh
-        remote_src: no
         
-    - name: Set permissions on shell script
-      command: chmod +x /home/ubuntu/secretsanta-generator/docker-container-condition.sh
+        
+   - name: Set permissions on shell script
+     file:
+        path: /home/ubuntu/secretsanta-generator/docker-container-condition.sh
+        mode: '0755'
       
     - name: Execute shell script
       command: /home/ubuntu/secretsanta-generator/docker-container-condition.sh
