@@ -65,8 +65,7 @@
         chdir: /home/ubuntu/secretsanta-generator
         
     - name: Scan Docker Image
-      command: trivy image --format table -o trivy-image-report.html
-        masseys/santa:latest
+      command: trivy image --format table -o trivy-image-report.html  masseys/santa:latest
         
     - name: Log in to Docker registry
       command: docker login -u {{ docker_username }} -p {{ docker_password }}
