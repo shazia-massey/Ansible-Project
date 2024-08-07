@@ -42,7 +42,7 @@
         
     - name: Copy shell script to remote server
       copy:
-        src: Projects-Script/docker-container-condition.sh
+        src: /home/ubuntu/Projects-Script/docker-container-condition.sh
         dest: /home/ubuntu/secretsanta-generator/docker-container-condition.sh
         
     - name: Permissions on shell script
