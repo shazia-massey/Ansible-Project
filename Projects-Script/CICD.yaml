@@ -18,7 +18,7 @@
         msg: "{{ git_result }}"
     - name: Copy shell script to remote server
       copy:
-        src:  /home/ubuntu/Ansible-Project/Projects-script/docker-container-condition.sh
+        src:  docker-container-condition.sh
         dest: /home/ubuntu/secretsanta-generator/docker-container-condition.sh
     - name: Permissions on shell script
       command: chmod +x docker-container-condition.sh
