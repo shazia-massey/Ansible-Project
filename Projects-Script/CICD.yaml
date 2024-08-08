@@ -21,12 +21,13 @@
         src:  /home/ubuntu/Ansible-Project/Projects-script/docker-container-condition.sh
         dest: /home/ubuntu/secretsanta-generator/docker-container-condition.sh
     - name: Permissions on shell script
-      command: chmod +x /home/ubuntu/secretsanta-generator/docker-container-condition.sh
+      command: chmod +x docker-container-condition.sh
       args:
         chdir: /home/ubuntu/secretsanta-generator   
-      
     - name: Execute shell script
-      command: /home/ubuntu/secretsanta-generator/docker-container-condition.sh
+      command: ./docker-container-condition.sh
+      args:
+        chdir: /home/ubuntu/secretsanta-generator
     - name: Run mvn compile
       command: mvn compile
       args:
@@ -36,10 +37,14 @@
       args:
         chdir: /home/ubuntu/secretsanta-generator
     - name: Execute SonarScanner
-      command: /home/ubuntu/sonar-scanner-4.8.0.2856-linux/bin/sonar-scanner
-        -Dsonar.host.url={{ SONARQUBE_URL }} -Dsonar.login={{ SONARQUBE_TOKEN }}
-        -Dsonar.projectKey=Santa -Dsonar.projectName=Santa
-        -Dsonar.java.binaries=.
+      ansible.builtin.command:
+        chdir: /home/ubuntu/secretsanta-generator
+        command: /home/ubuntu/sonar-scanner-4.8.0.2856-linux/bin/sonar-scanner
+          -Dsonar.host.url={{ SONARQUBE_URL }}
+          -Dsonar.login={{ SONARQUBE_TOKEN }}
+          -Dsonar.projectKey=Santa
+          -Dsonar.projectName=Santa
+          -Dsonar.java.binaries=.
     - name: Run mvn build
       command: mvn package
       args:
