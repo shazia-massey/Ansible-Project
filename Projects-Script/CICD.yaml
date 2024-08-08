@@ -45,7 +45,8 @@
       command: /home/ubuntu/sonar-scanner-4.8.0.2856-linux/bin/sonar-scanner
         -Dsonar.host.url={{ SONARQUBE_URL }}
         -Dsonar.login={{ SONARQUBE_TOKEN }}
-        -Dsonar.projectKey=Santa -Dsonar.projectName=Santa
+        -Dsonar.projectKey=Santa 
+        -Dsonar.projectName=Santa
         -Dsonar.java.binaries=.
     
     - name: Run mvn build
