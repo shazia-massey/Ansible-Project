@@ -20,11 +20,11 @@
         
     - name: Copy shell script to remote server
       copy:
-        src:  /home/ubuntu/shazia/Projects-Script/docker-container-condition.sh
+        src:  docker-container-condition.sh
         dest: /home/ubuntu/secretsanta-generator/docker-container-condition.sh
         
      - name: Permissions on shell script
-       command: chmod +x /home/ubuntu/shazia/Projects-Script/docker-container-condition.sh
+       command: chmod +x docker-container-condition.sh
        args:
         chdir: /home/ubuntu/secretsanta-generator   
       
@@ -43,12 +43,11 @@
         
     - name: Execute SonarScanner
       command: /home/ubuntu/sonar-scanner-4.8.0.2856-linux/bin/sonar-scanner
-        -Dsonar.host.url={{ SONARQUBE_URL }} -Dsonar.login={{ SONARQUBE_TOKEN }}
+        -Dsonar.host.url={{ SONARQUBE_URL }}
+        -Dsonar.login={{ SONARQUBE_TOKEN }}
         -Dsonar.projectKey=Santa -Dsonar.projectName=Santa
         -Dsonar.java.binaries=.
-      args:
-        chdir: /home/ubuntu/secretsanta-generator
-        
+    
     - name: Run mvn build
       command: mvn package
       args:
@@ -62,8 +61,6 @@
     - name: Scan Docker Image
       command: trivy image --format table -o trivy-image-report.html
         masseys/santa:latest
-      args:
-        chdir: /home/ubuntu/secretsanta-generator
         
     - name: Log in to Docker registry
       command: docker login -u {{ docker_username }} -p {{ docker_password }}
