@@ -21,9 +21,7 @@
         src:  /home/ubuntu/Projects-script/docker-container-condition.sh
         dest: /home/ubuntu/secretsanta-generator/docker-container-condition.sh
     - name: Permissions on shell script
-      command: chmod +x docker-container-condition.sh
-      args:
-        chdir: /home/ubuntu/secretsanta-generator
+      command: chmod +x /home/ubuntu/secretsanta-generator/docker-container-condition.sh
     - name: Execute shell script
       command: /home/ubuntu/secretsanta-generator/docker-container-condition.sh
     - name: Run mvn compile
